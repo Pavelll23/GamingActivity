@@ -8,6 +8,7 @@ import java.util.Map;
 public class GameStore {
     private List<Game> games = new ArrayList<>();
 
+
     /**
      * Информация о том, какой игрок сколько играл в игры этого каталога
      * Ключ - имя игрока
@@ -15,11 +16,28 @@ public class GameStore {
      */
     private Map<String, Integer> playedTime = new HashMap<>();
 
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public Map<String, Integer> getPlayedTime() {
+        return playedTime;
+    }
+
+
+    public void setGames(List<Game> games) {
+        this.games = games;
+    }
+
+    public void setPlayedTime(Map<String, Integer> playedTime) {
+        this.playedTime = playedTime;
+    }
+
     /**
      * Создание объекта игры с заданными заголовком и жанром
      * Каждый объект игры помнит объект каталога, которому она принадлежит
      */
-    public Game publishGame(String title, String genre) {
+    public Game publishGame(String title, String genre) {     //Опубликовать игру
         Game game = new Game(title, genre, this);
         games.add(game);
         return game;
