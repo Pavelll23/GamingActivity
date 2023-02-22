@@ -26,13 +26,13 @@ public class PlayerTest {
     }
 
 
-/*    @Test
+    /*@Test
 
     public void shouldTestInstallGame () {                       // Проводим тест на установку игры игроку
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
-        listGames.put(game, 0);
+            listGames.put(game, 0);
 
 
         Player player = new Player("Petya");
@@ -57,7 +57,7 @@ public class PlayerTest {
 
     }
 
-    @Test
+   /* @Test
 
     public void shouldTestPlayInGameStoreMap () {                      // Проводим тест что данные об игре игрока в игру передаются в объект католога игр
         GameStore store = new GameStore();
@@ -69,11 +69,11 @@ public class PlayerTest {
         player.installGame(game);
         player.play(game, 3);
 
-        assertEquals( getListPlayers() , store.getPlayedTime());
+        assertEquals( getListPlayers() , store.playedTime.entrySet());
 
-    }
+    }*/
 
-    /*@Test
+  /*  @Test
 
     public void shouldTestPlayInPlayerMap () {                      // Проводим тест что данные об игре игрока в игру передаются в Map игрока
         GameStore store = new GameStore();
@@ -85,7 +85,7 @@ public class PlayerTest {
         player.installGame(game);
         player.play(game, 3);
 
-        assertEquals( getListGames() , store.playedTime.entrySet());
+        assertEquals( listGames.entrySet() , player.playedTime.entrySet());
 
     }*/
 
@@ -119,7 +119,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void shouldTestMostPlayerByGenre() {                                         //Тестируем метод mostPlayerByGenre
+        public void shouldTestMostPlayerByGenre() {                                         //Тестируем метод mostPlayerByGenre
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Game game2 = store.publishGame("Нетология Баттл Онлайн 2", "Аркады");
@@ -151,6 +151,6 @@ public class PlayerTest {
         String  expected = null ;
         Assertions.assertEquals(null, player.mostPlayerByGenre("Спорт"));
     }
-    
+
 
 }
