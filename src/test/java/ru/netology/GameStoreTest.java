@@ -23,56 +23,82 @@ public class GameStoreTest {
         assertTrue(store.containsGame(game));
     }
     @Test
-    public void shouldAddPublishGame(){
+    public void shouldAddGames(){     //Добавить несколько игр
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Батл Онлайн","Аркады");
+        Game game1 = store.publishGame("Battle Sity", "Arcade");
+
+        assertTrue(store.containsGame(game));
+    }
+    @Test
+    public void shouldAddPublishGame(){     //Создание обьекта игры
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
-        assertEquals(game, store.getGames());
-
-
+        assertEquals(List.of(game), store.getGames());
     }
-
     @Test
-    public void shouldAddPlayTime() {
+    public void shouldAddPublishGames(){         //Создание несколких обьектов
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game1 = store.publishGame("Нетология Баттл Онлайн 2", "Аркады");
+
+        assertEquals(List.of(game,game1), store.getGames());
+    }
+    @Test
+    public void shouldAddPlayTime() {        //Регистрация количества игрового времени
         GameStore store = new GameStore();
         Map<String, Integer> time = new HashMap<>();
         time.put("Вова", 5);
         store.addPlayTime("Вова", 5);
+
         assertEquals(time , store.getPlayedTime());
     }
-
     @Test
-    public void shouldAddSumPlayerTime(){
+    public void shouldAddPlayTimeSomePlayers(){     //Регистрация игрового времени у нескольких игроков
+        GameStore store = new GameStore();
+        Map<String, Integer> time = new HashMap<>();
+        time.put("Vova", 5);
+        time.put("Roma", 3);
+        store.addPlayTime("Vova", 5);
+        store.addPlayTime("Roma", 3);
+
+        assertEquals(time , store.getPlayedTime());
+    }
+    @Test
+    public void shouldAddSumPlayerTime(){      // Суммирование игрового времени
         GameStore store = new GameStore();
         Map<String,Integer> time = new HashMap<>();
-
-        time.put("Vova", 8);
 
         store.addPlayTime("Vova", 5);
         store.addPlayTime("Vova", 3);
 
+        time.put("Vova", 8);
+
         assertEquals(time , store.getPlayedTime() );
     }
     @Test
-    public void shouldMostPlayer(){
+    public void shouldMostPlayer(){             //Поиск игрока с наибольшим количеством игрового времени
         GameStore store = new GameStore();
         Map<String,Integer> Playdtime = new HashMap<>();
         store.addPlayTime("Vova", 3);
         store.addPlayTime("Ira", 10);
         store.addPlayTime("Roma", 5);
+
         String expected = ("Ira");
-        store.getMostPlayer();
-        assertEquals(expected, store.getMostPlayer());
+        String actual = store.getMostPlayer();
+
+        assertEquals(expected, actual);
 
     }
     @Test
     public void shoulMostPlayerIfNull(){
         GameStore store = new GameStore();
-        Map<String,Integer> Playdtime = new HashMap<>();
 
         String expected = ("null");
-        store.getMostPlayer();
-        assertEquals(expected, store.getMostPlayer());
+        String actual = store.getMostPlayer();
+
+        assertEquals(expected, actual);
 
     }
     @Test
@@ -80,22 +106,36 @@ public class GameStoreTest {
         GameStore store = new GameStore();
         Map<String,Integer> Playdtime = new HashMap<>();
         store.addPlayTime("Vova", 3);
+
         String expected = ("Vova");
-        store.getMostPlayer();
-        assertEquals(expected, store.getMostPlayer());
+        String actual = store.getMostPlayer();
+
+        assertEquals(expected, actual);
     }
     @Test
     public void shouldMostPlayerIfOneHouer(){
         GameStore store = new GameStore();
         Map<String,Integer> Playdtime = new HashMap<>();
+
         store.addPlayTime("Vova", 1);
         String expected = ("Vova");
-        store.getMostPlayer();
+
         assertEquals(expected, store.getMostPlayer());
     }
     @Test
-    public void shouldSumPlayedTime(){
+    public void shouldSumPlayedTime(){     // Общее количество игрового времени в коталоге
         GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Батл Онлайн","Аркады");
+        Map<String,Integer> Playdtime = new HashMap<>();
+
+        store.addPlayTime("Vova", 3);
+        store.addPlayTime("Ira", 10);
+        store.addPlayTime("Roma", 5);
+
+        int expected = 18;
+        int actual = store.getSumPlayedTime();
+
+        Assertions.assertEquals(expected, actual);
 
     }
 
