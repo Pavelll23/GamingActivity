@@ -92,7 +92,6 @@ public class GameStore {
     public int getSumPlayedTime() {
         int sum = 0;
         for (int playerTime : playedTime.values()) {
-            //int playerTime = playedTime.get(playerName);
             sum = sum + playerTime;
         }
         return sum;
