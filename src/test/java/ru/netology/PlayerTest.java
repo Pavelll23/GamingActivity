@@ -69,7 +69,7 @@ public class PlayerTest {
         player.installGame(game);
         player.play(game, 3);
 
-        assertEquals( getListPlayers() ,  player.playedTime.entrySet());
+        assertEquals( getListPlayers() ,  store.getPlayedTime());
 
     }
 
@@ -85,7 +85,7 @@ public class PlayerTest {
         player.installGame(game);
         player.play(game, 3);
 
-        assertEquals( listGames.entrySet() , player.playedTime.entrySet());
+        assertEquals( getListGames() , player.getPlayedTime());
 
     }
 
@@ -116,6 +116,22 @@ public class PlayerTest {
 
         int expected = 7;
         assertEquals(expected, player.sumGenre (game.getGenre()));
+    }
+
+    @Test
+    public void shouldSumGenreIfNoGenre() {                                           //Тестируем метод sumGenre если в игры данного жанра не играли
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game2 = store.publishGame("Нетология Баттл Онлайн 2", "Головоломка");
+
+        Player player = new Player("Petya");
+        player.installGame(game);
+        player.installGame(game2);
+        player.play(game, 3);
+        player.play(game2, 4);
+
+        int expected = 0;
+        assertEquals(expected, player.sumGenre ("Спорт"));
     }
 
     @Test

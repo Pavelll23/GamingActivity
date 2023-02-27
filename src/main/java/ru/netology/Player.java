@@ -6,20 +6,15 @@ import java.util.Map;
 public class Player {
     private String name;
 
-    public Map<Game, Integer> getPlayedTime() {
-        return playedTime;
-    }
-
-    public void setPlayedTime(Map<Game, Integer> playedTime) {
-        this.playedTime = playedTime;
-    }
-
     /**
      * информация о том, в какую игру сколько часов было сыграно
      * ключ - игра
      * значение - суммарное количество часов игры в эту игру
      */
     protected Map<Game, Integer> playedTime = new HashMap<>();
+    public Map<Game, Integer> getPlayedTime() {
+        return playedTime;
+    }
 
     public Player(String name) {
         this.name = name;
@@ -63,8 +58,6 @@ public class Player {
         for (Game game : playedTime.keySet()) {
             if (game.getGenre().equals(genre)) {
                 sum += playedTime.get(game);
-            } else {
-                sum = 0;
             }
         }
         return sum;
