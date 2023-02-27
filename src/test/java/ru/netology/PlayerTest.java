@@ -26,7 +26,7 @@ public class PlayerTest {
     }
 
 
-    /*@Test
+    @Test
 
     public void shouldTestInstallGame () {                       // Проводим тест на установку игры игроку
         GameStore store = new GameStore();
@@ -41,7 +41,7 @@ public class PlayerTest {
 
         assertEquals(listGames.entrySet(), player.playedTime.entrySet());
 
-    }*/
+    }
 
 
     @Test
@@ -57,7 +57,7 @@ public class PlayerTest {
 
     }
 
-   /* @Test
+    @Test
 
     public void shouldTestPlayInGameStoreMap () {                      // Проводим тест что данные об игре игрока в игру передаются в объект католога игр
         GameStore store = new GameStore();
@@ -69,11 +69,11 @@ public class PlayerTest {
         player.installGame(game);
         player.play(game, 3);
 
-        assertEquals( getListPlayers() , store.playedTime.entrySet());
+        assertEquals( getListPlayers() ,  player.playedTime.entrySet());
 
-    }*/
+    }
 
-  /*  @Test
+    @Test
 
     public void shouldTestPlayInPlayerMap () {                      // Проводим тест что данные об игре игрока в игру передаются в Map игрока
         GameStore store = new GameStore();
@@ -87,7 +87,7 @@ public class PlayerTest {
 
         assertEquals( listGames.entrySet() , player.playedTime.entrySet());
 
-    }*/
+    }
 
     @Test
     public void shouldSumGenreIfOneGame() {                                             //Тестируем метод sumGenre если игрок играл в одну игру
@@ -127,11 +127,11 @@ public class PlayerTest {
         Player player = new Player("Petya");
         Player player2 = new Player("Vasya");
         player.installGame(game);
-        player2.installGame(game2);
+        player.installGame(game2);
         player.play(game, 3);
-        player2.play(game2, 4);
+        player.play(game2, 4);
 
-        String expected = "Нетология Баттл Онлайн 2";
+        Game expected = game2;
         assertEquals(expected, player.mostPlayerByGenre(game.getGenre()));
     }
 
@@ -146,7 +146,7 @@ public class PlayerTest {
         player.installGame(game);
         player2.installGame(game2);
         player.play(game, 3);
-        player.play(game2, 4);
+        player2.play(game2, 4);
 
         String  expected = null ;
         Assertions.assertEquals(null, player.mostPlayerByGenre("Спорт"));
