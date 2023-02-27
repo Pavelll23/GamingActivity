@@ -22,6 +22,7 @@ public class GameStoreTest {
         assertTrue(store.containsGame(game));
     }
 
+
     @Test
     public void shouldAddGameIfNoGame() {
 
@@ -158,8 +159,5 @@ public class GameStoreTest {
         Assertions.assertEquals(expected, actual);
 
     }
-
-
-    // другие ваши тесты
 
 }
