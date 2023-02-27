@@ -7,8 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GameStoreTest {
 
@@ -21,6 +20,16 @@ public class GameStoreTest {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         assertTrue(store.containsGame(game));
+    }
+
+    @Test
+    public void shouldAddGameIfNoGame() {
+
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game2 = new Game("Нетология Баттл Онлайн 2", "Аркады", store );
+
+        assertFalse(store.containsGame(game2));
     }
 
     @Test

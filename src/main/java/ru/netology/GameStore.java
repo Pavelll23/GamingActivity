@@ -25,13 +25,13 @@ public class GameStore {
     }
 
 
-    public void setGames(List<Game> games) {
+    /*public void setGames(List<Game> games) {
         this.games = games;
     }
 
     public void setPlayedTime(Map<String, Integer> playedTime) {
         this.playedTime = playedTime;
-    }
+    }*/
 
     /**
      * Создание объекта игры с заданными заголовком и жанром
